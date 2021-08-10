@@ -10,19 +10,25 @@ class CountdownTimer  {
     const hourValue = document.querySelector('[data-value="hours"]')
     const minsValue = document.querySelector('[data-value="mins"]')
     const secValue = document.querySelector('[data-value="secs"]')
-     setInterval (() => {
+    
+
+
+    const timerInterval = setInterval (() => {
         const curentTime = Date.now()
         const deltaTime = statrTimer - curentTime
         const timerComp = timerComponents(deltaTime)
-
+        if (deltaTime <= 0) {
+          clearInterval(timerInterval)
+        } else{
         dayValue.innerHTML = timerComp.days
         hourValue.innerHTML = ('0' + timerComp.hours).slice(-2)
         minsValue.innerHTML = ('0' + timerComp.mins).slice(-2)
         secValue.innerHTML = ('0' + timerComp.secs).slice(-2)
-
-        return console.log(timerComp)
-      },1000) 
-    }
+        
+        return console.log(timerComp)}
+      },1000)
+    
+  }
 }
 
 
@@ -40,6 +46,6 @@ function timerComponents(time) {
 
 let time = new CountdownTimer({
     selector: '#timer-1',
-    targetDate: new Date('Aug 19, 2021'),
+    targetDate: new Date('Aug 11, 2021'),
   });
-time.timer()
+  time.timer

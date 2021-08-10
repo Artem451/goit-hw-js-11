@@ -21,11 +21,14 @@ const colors = [
   const stopButton = document.querySelector('[data-action="stop"]')
   let intervalId = null
   startButton.addEventListener('click', () => {
+    startButton
     intervalId = setInterval(()=>{
         colorSelect(colors)
       }, 1000)
+      startButton.disabled = true
     })
 
   stopButton.addEventListener('click', () => {
     clearInterval(intervalId)
+    startButton.disabled = false
   })
